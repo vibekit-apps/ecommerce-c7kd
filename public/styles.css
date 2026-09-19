@@ -1,14 +1,14 @@
 :root {
-  --bg: #ffffff;
-  --bg-elev: #f6f7f9;
-  --bg-sunken: #f0f1f4;
-  --border: #e6e8ee;
-  --border-strong: #d5d8e0;
-  --text: #16181d;
-  --muted: #6b7280;
-  --accent: #111827;
-  --accent-hover: #1f2937;
-  --accent-fg: #ffffff; /* text/icons ON the accent color */
+  --bg: #fffdf8;
+  --bg-elev: #f5efe4;
+  --bg-sunken: #eee5d6;
+  --border: #e8dfd0;
+  --border-strong: #d3c3aa;
+  --text: #173f35;
+  --muted: #6f766d;
+  --accent: #173f35;
+  --accent-hover: #245b4d;
+  --accent-fg: #fffdf8; /* text/icons ON the accent color */
   --danger: #dc2626;
   --radius: 12px;
   --radius-sm: 8px;
@@ -17,26 +17,6 @@
   --ring: 0 0 0 2px var(--bg), 0 0 0 4px var(--accent);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #0f1115;
-    --bg-elev: #181b21;
-    --bg-sunken: #14171c;
-    --border: #262a33;
-    --border-strong: #363b46;
-    --text: #e8eaf0;
-    --muted: #9aa1ad;
-    --accent: #e8eaf0;
-    --accent-hover: #ffffff;
-    --accent-fg: #0f1115; /* dark text on the light accent */
-    --danger: #f87171;
-    --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.5);
-    --shadow-hover: 0 20px 44px -14px rgba(0, 0, 0, 0.7);
-  }
-  /* Patch light-only hardcoded surfaces */
-  .status { background: var(--bg-elev); }
-  .order-banner.success { color: #6ee7b7; background: #0c2b22; border-bottom-color: #14532d; }
-}
 
 * { box-sizing: border-box; }
 
@@ -44,7 +24,7 @@ html { -webkit-text-size-adjust: 100%; }
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, system-ui, sans-serif;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   background: var(--bg);
   color: var(--text);
   line-height: 1.55;
@@ -99,7 +79,8 @@ table { border-collapse: collapse; max-width: 100%; }
   gap: 8px;
   min-height: 44px;
 }
-.brand-mark { display: block; color: var(--text); }
+.brand-mark { display: block; color: #b68a43; }
+.brand sup { color: #b68a43; font-size: .5em; margin-left: 2px; vertical-align: super; }
 
 .categories {
   display: flex;
@@ -166,14 +147,21 @@ table { border-collapse: collapse; max-width: 100%; }
   line-height: 1;
 }
 
-.hero { text-align: center; padding: 56px 16px 36px; }
-.hero h1 {
-  font-size: clamp(1.9rem, 6.5vw, 3.1rem);
-  margin: 0 0 10px;
-  letter-spacing: -0.03em;
-  line-height: 1.08;
+.hero {
+  text-align: center;
+  padding: 68px 20px 44px;
+  background: radial-gradient(circle at 50% 0%, #f1dfba 0, #fffdf8 58%);
 }
-.hero p { color: var(--muted); margin: 0; font-size: clamp(1rem, 2.4vw, 1.12rem); }
+.eyebrow { display: block; color: #9b7132; font-size: .76rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; margin-bottom: 15px; }
+.hero h1 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(2.45rem, 9vw, 4.6rem);
+  font-weight: 500;
+  margin: 0 0 16px;
+  letter-spacing: -0.045em;
+  line-height: .98;
+}
+.hero p { color: var(--muted); margin: 0 auto; max-width: 570px; font-size: clamp(1rem, 2.4vw, 1.12rem); }
 
 main { max-width: 1180px; margin: 0 auto; padding: 16px; }
 
@@ -186,7 +174,7 @@ main { max-width: 1180px; margin: 0 auto; padding: 16px; }
 
 .product-card {
   background: var(--bg);
-  border-radius: var(--radius);
+  border-radius: 18px;
   overflow: hidden;
   border: 1px solid var(--border);
   box-shadow: var(--shadow-card);
@@ -523,7 +511,7 @@ footer { padding: 40px 16px; text-align: center; color: var(--muted); font-size:
 @media (min-width: 768px) {
   .nav { padding: 14px 32px; gap: 24px; flex-wrap: nowrap; }
   .categories { order: 0; width: auto; overflow: visible; -webkit-mask-image: none; mask-image: none; padding-bottom: 0; }
-  .hero { padding: 104px 24px 52px; }
+  .hero { padding: 118px 24px 68px; }
   main { padding: 32px; }
   .product-grid { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 24px; }
   .product-info { padding: 16px 16px 18px; }
