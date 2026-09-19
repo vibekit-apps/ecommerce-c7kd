@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Orders</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <!-- Owner-only page (not linked from the storefront). Requires the
+       ORDERS_KEY env var to be set on the app; the key entered here is only
+       kept in sessionStorage for this tab. -->
+  <header class="nav">
+    <a class="brand" href="/" aria-label="Store home"><span>Store</span></a>
+  </header>
+  <main class="cart-page">
+    <h1>Orders</h1>
+    <div id="orders-body"><p class="muted">Loading…</p></div>
+  </main>
+  <script>
+    (async () => {
+      const body = document.getElementById('orders-body');
+      const money = (c) => '$' + (c / 100).toFixed(2);
+      const esc = (s) => String(s).replace(/[&<>"']/g, (ch) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[ch]);
+
+      async function load(key) {
+        const res = await fetch('/api/orders?key=' + encodeURIComponent(key));
+        if (res.status === 404) {
+          body.innerHTML = '<p class="muted">Order viewing is disabled. Set an <code>ORDERS_KEY</code> env var on this app, then reload.</p>';
+          return true;
+        }
+        if (res.status === 401) return false;
+        const data = await res.json();
+        const orders = (data && data.orders) || [];
+        if (!orders.length) {
+          body.innerHTML = '<p class="muted">No orders yet.</p>';
+          return true;
+        }
+        body.innerHTML = orders.map((o) => `
+          <div class="order-card">
+            <div class="order-head">
+              <strong>${esc(o.id)}</strong>
+              <span class="muted">${esc(o.method)} · ${esc(new Date(o.createdAt).toLocaleString())}</span>
+              <strong>${money(o.subtotal)}</strong>
+            </div>
+            <ul class="order-items">
+              ${o.items.map((i) => `<li>${i.quantity} × ${esc(i.name)} <span class="muted">${money(i.price * i.quantity)}</span></li>`).join('')}
+            </ul>
+            ${o.customer && o.customer.name ? `<div class="order-customer muted small">${esc(o.customer.name)} · ${esc(o.customer.phone || '')}<br>${esc(o.customer.address || '')}</div>` : ''}
+          </div>`).join('');
+        return true;
+      }
+
+      let key = sessionStorage.getItem('ordersKey') || '';
+      for (;;) {
+        if (key && await load(key)) { sessionStorage.setItem('ordersKey', key); return; }
+        key = prompt('Enter the orders key (the ORDERS_KEY env var):') || '';
+        if (!key) { body.innerHTML = '<p class="muted">A key is required to view orders.</p>'; return; }
+      }
+    })();
+  </script>
+  <style>
+    .order-card { border: 1px solid #e5e7eb; border-radius: 10px; padding: 14px 16px; margin-bottom: 12px; }
+    .order-head { display: flex; gap: 12px; justify-content: space-between; flex-wrap: wrap; margin-bottom: 8px; }
+    .order-items { margin: 0 0 8px 18px; padding: 0; }
+    .order-customer { border-top: 1px dashed #e5e7eb; padding-top: 8px; }
+  </style>
+</body>
+</html>

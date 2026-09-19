@@ -1,0 +1,74 @@
+[
+  {
+    "id": "sku-001",
+    "slug": "aurora-headphones",
+    "name": "Aurora Wireless Headphones",
+    "price": 18900,
+    "category": "electronics",
+    "description": "Active noise cancellation, 36-hour battery, plush memory-foam earcups. Studio-grade drivers tuned for honest reproduction, not boomy bass.",
+    "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800"
+  },
+  {
+    "id": "sku-002",
+    "slug": "tundra-down-jacket",
+    "name": "Tundra Down Jacket",
+    "price": 24900,
+    "category": "apparel",
+    "description": "Recycled-down 800-fill, ripstop shell rated to -20°F. Cuts wind without trapping moisture. Weighs less than your laptop.",
+    "image": "https://images.unsplash.com/photo-1551028719-00167b16eac5?w=800"
+  },
+  {
+    "id": "sku-003",
+    "slug": "meridian-pour-over",
+    "name": "Meridian Pour-Over Kit",
+    "price": 4900,
+    "category": "home",
+    "description": "Borosilicate glass carafe, hand-thrown ceramic dripper, 50 unbleached filters. The setup serious cafés use, sized for your kitchen.",
+    "image": "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800"
+  },
+  {
+    "id": "sku-004",
+    "slug": "ridge-merino-tee",
+    "name": "Ridge Merino Crew",
+    "price": 6900,
+    "category": "apparel",
+    "description": "17.5-micron merino. Antimicrobial, doesn't hold odor, regulates temperature. Wear it five days straight before laundry day.",
+    "image": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=800"
+  },
+  {
+    "id": "sku-005",
+    "slug": "helix-mechanical-keyboard",
+    "name": "Helix Mechanical Keyboard",
+    "price": 15900,
+    "category": "electronics",
+    "description": "Hot-swappable switches, PBT double-shot keycaps, gasket-mounted plate. Sounds like a thock, types like butter.",
+    "image": "https://images.unsplash.com/photo-1595225476474-87563907a212?w=800"
+  },
+  {
+    "id": "sku-006",
+    "slug": "oak-cutting-board",
+    "name": "Oak End-Grain Cutting Board",
+    "price": 8900,
+    "category": "home",
+    "description": "White oak, end-grain construction. Self-healing surface that's gentle on knife edges. Comes pre-conditioned with food-safe mineral oil.",
+    "image": "https://images.unsplash.com/photo-1587302108992-20648821725d?w=800"
+  },
+  {
+    "id": "sku-007",
+    "slug": "compass-leather-wallet",
+    "name": "Compass Leather Wallet",
+    "price": 7900,
+    "category": "accessories",
+    "description": "Full-grain vegetable-tanned leather. Holds 8 cards, folded bills, and a few business cards. Develops a patina that tells your story.",
+    "image": "https://images.unsplash.com/photo-1627123424574-724758594e93?w=800"
+  },
+  {
+    "id": "sku-008",
+    "slug": "nimbus-running-shoe",
+    "name": "Nimbus Running Shoe",
+    "price": 13900,
+    "category": "apparel",
+    "description": "Carbon-plated midsole, recycled mesh upper, 8mm drop. Designed for marathon training without the trail-shoe weight penalty.",
+    "image": "https://images.unsplash.com/photo-1560769629-975ec94e6a86?w=800"
+  }
+]
